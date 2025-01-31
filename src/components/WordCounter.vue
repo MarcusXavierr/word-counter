@@ -2,21 +2,23 @@
   <div class="word-counter-container">
     <div class="inner-container">
       <h1 class="title">Word Counter</h1>
-      <div class="input-group">
-        <div for="word-input" class="input-label" @click.prevent>Enter your text:</div>
-        <textarea
-          id="word-input"
-          v-model="text"
-          class="custom-textarea"
-          placeholder="Type or paste your text here..."
-        />
-      </div>
-      <button
-        @click="countWords"
-        class="count-button"
-      >
-        Count Words
-      </button>
+      <form @submit.prevent="countWords" class="form">
+        <div class="input-group">
+          <div for="word-input" class="input-label" @click.prevent>Enter your text:</div>
+          <textarea
+            id="word-input"
+            v-model="text"
+            class="custom-textarea"
+            placeholder="Type or paste your text here..."
+          />
+        </div>
+        <button
+          type="submit"
+          class="count-button"
+        >
+          Count Words
+        </button>
+      </form>
       <p
         id="word-count"
         class="word-count"
@@ -69,6 +71,12 @@ $shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06
       font-weight: 700;
       text-align: center;
       color: var(--color-gray-bold);
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     .input-group {
